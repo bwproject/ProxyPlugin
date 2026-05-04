@@ -1,4 +1,4 @@
-name: Build Plugin
+name: Build & Release Plugin
 
 on:
   push:
@@ -20,11 +20,32 @@ jobs:
           java-version: 21
           cache: maven
 
-      - name: Build
+      - name: Build with Maven
         run: mvn clean package
+
+      - name: Get version
+        id: version
+        run: |
+          VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Rename jar
+        run: |
+          mkdir release
+          cp target/*.jar release/ProxyPlugin.jar
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ProxyPlugin
           path: target/*.jar
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        if: github.ref == 'refs/heads/main'
+        with:
+          tag_name: v${{ steps.version.outputs.version }}-${{ github.run_number }}
+          name: ProxyPlugin v${{ steps.version.outputs.version }}
+          files: release/ProxyPlugin.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
