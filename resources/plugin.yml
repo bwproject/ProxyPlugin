@@ -1,0 +1,5 @@
+name: ProxyPlugin
+version: 1.0
+main: ru.projectbw.proxy.ProxyPlugin
+load: STARTUP
+api-version: "1.20"
