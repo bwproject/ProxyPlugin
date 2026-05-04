@@ -1,0 +1,17 @@
+proxy:
+  host: "127.0.0.1"
+  port: 1080
+  username: "user"
+  password: "pass"
+
+domains:
+  - "repo.maven.apache.org"
+  - "repo.papermc.io"
+  - "libraries.minecraft.net"
+  - "minecraft"
+  - "maven"
+  - "papermc"
+  - "github"
+  - "jitpack"
+
+debug: true
