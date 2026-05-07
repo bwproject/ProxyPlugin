@@ -1,0 +1,7 @@
+{
+  "id": "proxyplugin",
+  "name": "ProxyPlugin",
+  "version": "1.0",
+  "main": "ru.projectbw.proxy.velocity.VelocityEntrypoint",
+  "authors": ["bwproject"]
+}
