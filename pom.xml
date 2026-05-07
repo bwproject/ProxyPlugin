@@ -19,6 +19,7 @@
 
     <repositories>
 
+        <!-- Paper / Velocity -->
         <repository>
             <id>papermc</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
@@ -28,6 +29,7 @@
 
     <dependencies>
 
+        <!-- Paper API -->
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
@@ -35,18 +37,11 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Velocity API -->
         <dependency>
             <groupId>com.velocitypowered</groupId>
             <artifactId>velocity-api</artifactId>
             <version>3.4.0-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.velocitypowered</groupId>
-            <artifactId>velocity-api</artifactId>
-            <version>3.4.0-SNAPSHOT</version>
-            <classifier>processor</classifier>
             <scope>provided</scope>
         </dependency>
 
@@ -55,34 +50,27 @@
     <build>
 
         <resources>
+
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>false</filtering>
             </resource>
+
         </resources>
 
         <plugins>
 
+            <!-- Java compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
 
                 <configuration>
-
                     <source>${java.version}</source>
                     <target>${java.version}</target>
-
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>com.velocitypowered</groupId>
-                            <artifactId>velocity-api</artifactId>
-                            <version>3.4.0-SNAPSHOT</version>
-                            <classifier>processor</classifier>
-                        </path>
-                    </annotationProcessorPaths>
-
                 </configuration>
+
             </plugin>
 
         </plugins>
